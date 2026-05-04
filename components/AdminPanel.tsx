@@ -257,14 +257,14 @@ export const AdminPanel: React.FC<{ onBack: () => void, onProfileUpdate: (url: s
                   <div className="grid md:grid-cols-2 gap-8">
                     <div className="space-y-4">
                       <p className="text-[10px] text-emerald-500 uppercase tracking-widest mb-2">Recent_Transmissions</p>
-                      {messages.slice(0, 3).length > 0 ? (
-                        messages.slice(0, 3).map((m, i) => (
+                      {messages.slice(0, 5).length > 0 ? (
+                        messages.slice(0, 5).map((m, i) => (
                           <div key={i} className="p-3 bg-slate-950 rounded border border-emerald-500/5 flex justify-between items-center group cursor-pointer hover:border-emerald-500/20" onClick={() => setActiveTab('messages')}>
                             <div>
                               <p className="text-[10px] text-emerald-400 font-bold">{m.name}</p>
                               <p className="text-[9px] text-slate-500 truncate max-w-[150px]">{m.message}</p>
                             </div>
-                            <span className="text-[8px] text-slate-600">VIEW &gt;</span>
+                            <span className="text-[8px] text-slate-600 font-mono">[{new Date(m.created_at || '').toLocaleTimeString()}]</span>
                           </div>
                         ))
                       ) : (
@@ -274,21 +274,24 @@ export const AdminPanel: React.FC<{ onBack: () => void, onProfileUpdate: (url: s
                     <div className="space-y-4">
                       <div className="p-4 bg-slate-950 rounded border border-emerald-500/5">
                         <div className="flex justify-between text-[10px] uppercase mb-2">
-                          <span className="text-slate-400">Memory Usage</span>
-                          <span className="text-emerald-500">12%</span>
+                          <span className="text-slate-400">Database Connection</span>
+                          <span className="text-emerald-500">CONNECTED</span>
                         </div>
                         <div className="h-1 bg-slate-900 rounded-full overflow-hidden">
-                          <div className="h-full bg-emerald-500 w-[12%]"></div>
+                          <div className="h-full bg-emerald-500 w-full"></div>
                         </div>
                       </div>
                       <div className="p-4 bg-slate-950 rounded border border-emerald-500/5">
                         <div className="flex justify-between text-[10px] uppercase mb-2">
-                          <span className="text-slate-400">CPU Load</span>
-                          <span className="text-emerald-500">4%</span>
+                          <span className="text-slate-400">Secure Protocol</span>
+                          <span className="text-emerald-500">V2.4_ENABLED</span>
                         </div>
                         <div className="h-1 bg-slate-900 rounded-full overflow-hidden">
-                          <div className="h-full bg-emerald-500 w-[4%]"></div>
+                          <div className="h-full bg-cyan-500 w-[85%]"></div>
                         </div>
+                      </div>
+                      <div className="p-2 border border-emerald-500/10 rounded text-[8px] text-slate-500 font-mono font-bold text-center uppercase tracking-widest">
+                        Uptime: 99.98% // Nodes: Active
                       </div>
                     </div>
                   </div>
